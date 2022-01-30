@@ -1,0 +1,33 @@
+
+
+index:
+   path: /
+   methods: get
+   controller: App\Controller\TestController::listArticle
+
+vue:
+   path: /{id}
+
+   controller: App\Controller\TestController::vueArticle
+
+ajouter:
+   path: admin/article/ajout
+   
+   controller: App\Controller\AdminController::ajouter
+
+ajout:
+   path: admin/article/{id}/edition  
+   controller: App\Controller\AdminController::ajouter
+
+brouillonArticle:
+   path: admin/article/brouillon 
+   controller: App\Controller\AdminController::brouillon
+
+delete:
+   path: admin/delete/article/{id}/edition
+   controller: App\Controller\AdminController::delete
+
+
+
+
+
