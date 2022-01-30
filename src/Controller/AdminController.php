@@ -46,13 +46,13 @@ class AdminController extends AbstractController
         ]);
     }
 
-    public function delete(Article $article){
-$em = $this->getDoctrine()->getManager();
-$em->remove($article);
-$em->flush();
+//     public function delete(Article $article){
+// $em = $this->getDoctrine()->getManager();
+// $em->remove($article);
+// $em->flush();
 
-// return new Response('Article supprimé');
-    }
+// // return new Response('Article supprimé');
+//     }
     
     public function brouillon(ArticleRepository $articleRepository){
 

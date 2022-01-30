@@ -4,37 +4,55 @@
 {% endblock %}
 
 {% block body %}
+	<h1>
+		{% if app.request.get('_route') == 'ajouter' %}
+			Ajouter un article
+		{% else %}
+			Modifier l'article
+		{% endif %}
+	</h1>
+	{% if not form.vars.valid %}
+		{{ form_start(form, {'attr':{'class':'was-validated mb-5'}}) }}
+	{% else %}
+		{{ form_start(form, {'attr':{'class':'mb-5'}}) }}
+	{% endif %}
 
-	{{ form_start(form) }}
-
+    <div class="form-group mt-2">
 	{{ form_label(form.titre, null, {'label_attr': {'class':'form-label'}}
 	) }}
 	{{ form_widget(form.titre, {'attr': {'class':'form-control'}}
 	) }}
-	{% if form_errors(form.titre) is not empty %}
-		<div class="alert alert-danger">{{ form_errors(form.titre) }}</div>
-	{% endif %}
-
-
+	<div class="invalid-feedback">
+  {{ form_errors(form.titre) }}
+            </div>
+ </div>
+<div class="form-group mt-2">
 	{{ form_label(form.contenu, null, {'label_attr': {'class':'form-label'}}
 	) }}
 	{{ form_widget(form.contenu, {'attr': { 'class':'form-control'}}
 	) }}
+   </div>
 
+<div class="form-group mt-2">
 	{{ form_label(form.dateCreation, null, {'label_attr': {'class':'form-label'}}
 	) }}
 	{{ form_widget(form.dateCreation, {'attr': { 'class':'form-control'}}
 	) }}
+	   </div>
 
+<div class="form-group mt-2">
 	{{ form_label(form.categories, null, {'label_attr': {'class':'form-label'}}
 	) }}
 	{{ form_widget(form.categories, {'attr': { 'class':'form-control'}}
 	) }}
+	   </div>
 
+<div class="form-group mt-2">
 	{{ form_widget(form.brouillon, {'attr': {'class':'btn btn-default'}})}}
 	{{ form_widget(form.publier, {'attr': {'class':'btn btn-success'}})}}
-	
-	<a href="{{ path('delete',{'id':article.id}) }}">Supprimer</a>
+   </div>
+   
+	{# <a href="{{ path('delete',{'id':article.id}) }}">Supprimer</a> #}
 
 	{{ form_rest(form) }}
 
